@@ -1,0 +1,32 @@
+#navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+#navbar > img {
+    height: 3em;
+    text-shadow: 3px;
+}
+#outfit-builder {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+#outfit-builder > div {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+#outfit-builder > div ~ div {
+    border-left: 1px solid black;
+}
+ul > li {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                          supported by Chrome and Opera */
+}

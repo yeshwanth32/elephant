@@ -1,174 +1,52 @@
 <!DOCTYPE html>
+<html>
 
-<!-- Entire bundle -->
-<script src="sortable.min.js"></script>
+  <head>
+    <link rel="stylesheet" href="index.css">
+  </head>
 
-<div id="navbar">
-  <img id="plus" src="img/plus.svg">
-  <img id="shirt" src="img/shirt.svg">
-  <img id="pants" src="img/pants.svg">
-  <img id="shoe" src="img/shoe.svg">
-  <img id="clock" src="img/clock.svg">
-</div>
-<hr>
+  <body>
 
-<div id="outfit-builder">
-  <div>
-    <h1>outfit</h1>
-    <ul id="outfit">
-      <li>example</li>
-      <li>example2</li>
-    </ul>
-  </div>
+    <!-- Entire bundle -->
+    <script src="sortable.min.js"></script>
 
-  <div>
-    <h1>my closet</h1>
-    <ul id="closet">
-      <li>hi</li>
-    </ul>
-  </div>
-</div>
+    <div id="navbar">
+      <img id="plus" src="img/plus.svg">
+      <img id="shirt" src="img/shirt.svg">
+      <img id="pants" src="img/pants.svg">
+      <img id="shoe" src="img/shoe.svg">
+      <img id="clock" src="img/clock.svg">
+    </div>
+    <hr>
 
-<div id="closet-view">
+    <div id="outfit-builder">
+      <div>
+        <h1>outfit</h1>
+        <ul id="outfit">
+          <li>example</li>
+          <li>example2</li>
+        </ul>
+      </div>
 
-  <div id="closet-items">
-  </div>
+      <div>
+        <h1>my closet</h1>
+        <ul id="closet">
+          <li>hi</li>
+        </ul>
+      </div>
+    </div>
 
-  <input id="clothes-name" type="text" placeholder="name">
-  <input id="clothes-color" type="color" value="#ff0000">
-  <button id="add-clothes">add!</button>
-  
-</div>
+    <div id="closet-view">
 
-<script>
+      <div id="closet-items">
+      </div>
 
-  var database = [];
-  var viewname = 'outfit-builder';
-  var parameters = {};
-
-  old_database = localStorage.getItem('database')
-  if (old_database != null) {
-      database = JSON.parse(old_database)
-  }
-  else {
-      database = []
-  }
-
-  document.getElementById('add-clothes').onclick = function() {
-      database.push({
-          category: parameters['category'],
-          name: document.getElementById('clothes-name').value,
-          color: document.getElementById('clothes-color').value
-      })
-      localStorage.setItem('database', JSON.stringify(database))
-      display(viewname, parameters);
-  }
-  
-  var el = document.getElementById('outfit');
-  var outfit = Sortable.create(el, {group: 'outfit-builder'});
-  var closet = Sortable.create(document.getElementById('closet'), {group: 'outfit-builder'});
-
-  function hide_all() {
-      document.getElementById('outfit-builder').style.display = 'none'
-      document.getElementById('closet-view').style.display = 'none'
-      document.getElementById('closet-items').innerHTML = ''
-  }
-
-  function display_item(item) {
-      var el = document.createElement('div')
+      <input id="clothes-name" type="text" placeholder="name">
+      <input id="clothes-color" type="color" value="#ff0000">
+      <button id="add-clothes">add!</button>
       
-      var name = document.createElement('span')
-      name.textContent = item['name']
-      el.appendChild(name)
-      
-      var x = document.createElement('span')
-      x.textContent = 'x'
-      el.appendChild(x)
-      x.onclick = (function(parent) {
-          return function() {
-              parent.parentElement.removeChild(parent)
-          }
-      })(el)
-
-      document.getElementById('closet-items').appendChild(el)
-  }
+    </div>
+    <script src="index.js"></script>
+  </body>
   
-  function display(_viewname, _parameters) {
-      hide_all()
-      viewname = _viewname
-      parameters = _parameters
-      if (viewname == 'outfit-builder') {
-          document.getElementById('outfit-builder').style.display = ''
-      }
-      else if (viewname == 'closet-view') {
-          document.getElementById('closet-view').style.display = ''
-          for (i = 0; i < database.length; i++) {
-              let item = database[i]
-              if (item['category'] == parameters['category']) {
-                  display_item(item)
-              }
-          }
-          
-      }
-      
-  }
-
-  document.getElementById('plus').onclick = function() {
-      display('outfit-builder', {});
-  }
-
-  document.getElementById('shirt').onclick = function() {
-      display('closet-view', {'category': 'top'});
-  }
-
-  document.getElementById('shoe').onclick = function() {
-      display('closet-view', {'category': 'shoes'});      
-  }
-  
-  document.getElementById('pants').onclick = function() {
-      display('closet-view', {'category': 'bottom'});      
-  }
-
-  document.getElementById('clock').onclick = function() {
-  }
-
-
-  display('outfit-builder', {})
-  
-  
-</script>
-
-<style>
-  #navbar {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      padding-top: 1em;
-      padding-bottom: 1em;
-  }
-  #navbar > img {
-      height: 3em;
-      text-shadow: 3px;
-  }
-  #outfit-builder {
-      display: flex;
-      justify-content: center;
-      flex-direction: row;
-  }
-  #outfit-builder > div {
-      padding-left: 1em;
-      padding-right: 1em;
-  }
-  #outfit-builder > div ~ div {
-      border-left: 1px solid black;
-  }
-  ul > li {
-        -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
-  }
-</style>
+</html>
