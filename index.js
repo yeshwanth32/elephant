@@ -1,3 +1,17 @@
+function parse_query(query_string) {
+    var query = {};
+    var pairs = (query_string[0] === '?' ? query_string.substr(1) : query_string).split('&');
+    for (var i = 0; i < pairs.length; i++) {
+        var pair = pairs[i].split('=');
+        query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+    }
+    return query;
+}
+
+let query_parameters = parse_query(window.location.search)
+let username = query_parameters['username']
+let email = query_parameters['email']
+
 // global page state variables
 var viewname = 'outfit-builder';
 var parameters = {};
