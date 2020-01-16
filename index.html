@@ -31,7 +31,24 @@
       <div>
         <h1>my closet</h1>
         <ul id="closet">
-          <li>hi</li>
+          <script>
+              var array = [
+                ["shirt","green"],
+                ["shoe","blue"],
+                ["cap","black"],
+                ["pants","blue"],
+              ];
+              var table = "<table><th>garment</th><th>color</th>";
+              for (var i = 0; i < array.length; i++){
+                table += "<tr>";
+                for (var k = 0; k < array[i].length; k++){
+                  table += "<td>" + array[i][k] + "</td>";
+                }
+                table += "</tr>";
+              }
+              table += "</table>"
+              document.write(table);
+          </script>
         </ul>
       </div>
     </div>
@@ -47,6 +64,7 @@
       
     </div>
     <script src="index.js"></script>
+
   </body>
   
 </html>
