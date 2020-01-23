@@ -23,39 +23,19 @@
       <div>
         <h1>outfit</h1>
         <ul id="outfit">
-          <li>example</li>
-          <li>example2</li>
         </ul>
       </div>
 
       <div>
         <h1>my closet</h1>
-        <ul id="closet">
-          <script>
-              var array = [
-                ["shirt","green"],
-                ["shoe","blue"],
-                ["cap","black"],
-                ["pants","blue"],
-              ];
-              var table = "<table><th>garment</th><th>color</th>";
-              for (var i = 0; i < array.length; i++){
-                table += "<tr>";
-                for (var k = 0; k < array[i].length; k++){
-                  table += "<td>" + array[i][k] + "</td>";
-                }
-                table += "</tr>";
-              }
-              table += "</table>"
-              document.write(table);
-          </script>
+        <ul id="closet-items">
         </ul>
       </div>
     </div>
 
     <div id="closet-view">
 
-      <div id="closet-items">
+      <div id="closet-view-items">
       </div>
 
       <input id="clothes-name" type="text" placeholder="name">
