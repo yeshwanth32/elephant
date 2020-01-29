@@ -41,6 +41,7 @@ function hide_all() {
     document.getElementById('outfit-builder').style.display = 'none'
     document.getElementById('closet-view').style.display = 'none'
     document.getElementById('closet-items').innerHTML = ''
+    document.getElementById('closet-view-items').innerHTML = ''
 }
 
 function display(_viewname, _parameters) {
@@ -128,7 +129,6 @@ function display_item_in_container(container, item) {
             for (let i = 0; i < database.length; i++) {
                 console.log(database[i]['id'])
                 if (item['id'] == database[i]['id']) {
-                    console.log('splicing!!')
                     database.splice(i, 1)
                     localStorage.setItem('database', JSON.stringify(database))
                 }
